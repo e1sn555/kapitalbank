@@ -1,0 +1,38 @@
+{
+    "name": "e1sn555/kapitalbank",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "files": [
+            "./src/helpers.php"
+        ],
+        "psr-4": {
+            "Kapitalbank\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Elshen Memmedov",
+            "email": "dev.e1sn@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "ext-curl": "*",
+        "ext-simplexml": "*"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kapitalbank\\KapitalbankServiceProvider"
+            ],
+            "aliases": {
+                "Kapitalbank": "Kapitalbank\\KapitalbankFacade"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "prefer-stable": true
+}
