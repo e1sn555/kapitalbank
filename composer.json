@@ -18,10 +18,7 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {
-        "ext-curl": "*",
-        "ext-simplexml": "*"
-    },
+    "require": {},
     "extra": {
         "laravel": {
             "providers": [
