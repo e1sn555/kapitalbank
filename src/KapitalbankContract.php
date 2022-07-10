@@ -33,6 +33,17 @@ interface KapitalbankContract
     public function refund(float $amount, string $session_id, string $order_id, string $description, int $currency = 944, string $language = 'AZ'): array;
 
     /**
+     * @param string $order_id
+     * @param string $session_id
+     * @param string $description
+     * @param int $currency
+     * @param string $language
+     * @return array
+     * @throws Exception
+     */
+    public function cancelPreAuth(string $order_id, string $session_id, string $description, int $currency = 944, string $language = 'AZ'): array;
+
+    /**
      * @param float $amount
      * @param string $description
      * @param string $order_id
@@ -42,5 +53,5 @@ interface KapitalbankContract
      * @return array
      * @throws Exception
      */
-    public function cancelPreAuth(float $amount, string $description, string $order_id, string $session_id, int $currency = 944, string $language = 'AZ'): array;
+    public function completePreAuth(float $amount, string $description, string $order_id, string $session_id, int $currency = 944, string $language = 'AZ'): array;
 }
