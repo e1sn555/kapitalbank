@@ -2,6 +2,7 @@
     "name": "e1sn555/kapitalbank",
     "type": "library",
     "license": "MIT",
+    "version": "1.0.0",
     "autoload": {
         "files": [
             "./src/helpers.php"
