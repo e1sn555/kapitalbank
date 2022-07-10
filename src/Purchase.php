@@ -28,7 +28,7 @@ trait Purchase
                             'body' => generateXML([
                                 'Request' => [
                                     'Operation' => 'CreateOrder',
-                                    'Language' => 'RU',
+                                    'Language' => $language,
                                     'Order' => [
                                         'OrderType' => $order_type,
                                         'Merchant' => config('kapitalbank.merchant'),

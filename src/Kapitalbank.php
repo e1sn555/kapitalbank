@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Http;
 
 class Kapitalbank implements KapitalbankContract
 {
-    use Purchase, Refund;
+    use Purchase, Refund, CancelPreAuth;
 
     /**
      * @var PendingRequest
