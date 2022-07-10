@@ -1,6 +1,12 @@
 {
     "name": "e1sn555/kapitalbank",
     "type": "library",
+    "keywords": [
+        "kapitalbank",
+        "payment",
+        "laravel",
+        "gateway"
+    ],
     "license": "MIT",
     "version": "1.0.0",
     "autoload": {
