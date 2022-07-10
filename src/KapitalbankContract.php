@@ -15,10 +15,10 @@ interface KapitalbankContract
      * @param string|null $approve_url
      * @param string|null $cancel_url
      * @param string|null $decline_url
-     * @return array
+     * @return Kapitalbank
      * @throws Exception
      */
-    public function createOrder(float $amount, string $description, int $currency = 944, string $language = 'AZ', string $order_type = 'Purchase', string|null $approve_url = null, string $cancel_url = null, string|null $decline_url = null): array;
+    public function createOrder(float $amount, string $description, int $currency = 944, string $language = 'AZ', string $order_type = 'Purchase', string|null $approve_url = null, string $cancel_url = null, string|null $decline_url = null): Kapitalbank;
 
     /**
      * @param float $amount
@@ -27,10 +27,10 @@ interface KapitalbankContract
      * @param string $description
      * @param int $currency
      * @param string $language
-     * @return array
+     * @return Kapitalbank
      * @throws Exception
      */
-    public function refund(float $amount, string $session_id, string $order_id, string $description, int $currency = 944, string $language = 'AZ'): array;
+    public function refund(float $amount, string $session_id, string $order_id, string $description, int $currency = 944, string $language = 'AZ'): Kapitalbank;
 
     /**
      * @param string $order_id
@@ -38,10 +38,10 @@ interface KapitalbankContract
      * @param string $description
      * @param int $currency
      * @param string $language
-     * @return array
+     * @return Kapitalbank
      * @throws Exception
      */
-    public function cancelPreAuth(string $order_id, string $session_id, string $description, int $currency = 944, string $language = 'AZ'): array;
+    public function cancelPreAuth(string $order_id, string $session_id, string $description, int $currency = 944, string $language = 'AZ'): Kapitalbank;
 
     /**
      * @param float $amount
@@ -50,8 +50,8 @@ interface KapitalbankContract
      * @param string $session_id
      * @param int $currency
      * @param string $language
-     * @return array
+     * @return Kapitalbank
      * @throws Exception
      */
-    public function completePreAuth(float $amount, string $description, string $order_id, string $session_id, int $currency = 944, string $language = 'AZ'): array;
+    public function completePreAuth(float $amount, string $description, string $order_id, string $session_id, int $currency = 944, string $language = 'AZ'): Kapitalbank;
 }

@@ -3,7 +3,6 @@
 namespace Kapitalbank;
 
 use Exception;
-use SimpleXMLElement;
 
 trait CancelPreAuth
 {
@@ -13,40 +12,36 @@ trait CancelPreAuth
      * @param string $description
      * @param int $currency
      * @param string $language
-     * @return array
+     * @return Kapitalbank
      * @throws Exception
      */
-    public function cancelPreAuth(string $order_id, string $session_id, string $description, int $currency = 944, string $language = 'AZ'): array
+    public function cancelPreAuth(string $order_id, string $session_id, string $description, int $currency = 944, string $language = 'AZ'): Kapitalbank
     {
-        return
-            collect(
-                new SimpleXMLElement(
-                    $this->service->send('POST', '/Exec', [
-                            'body' => generateXML([
-                                'Request' => [
-                                    'Operation' => 'Reverse',
-                                    'Language' => $language,
-                                    'Order' => [
-                                        'Merchant' => config('kapitalbank.merchant'),
-                                        'OrderID' => $order_id,
-                                        'Positions' => [
-                                            'Position' => [
-                                                'PaymentSubjectType' => 1,
-                                                'Quantity' => 1,
-                                                'PaymentType' => 2,
-                                                'PaymentMethodType' => 1
-                                            ]
-                                        ]
-                                    ],
-                                    'Description' => $description,
-                                    'SessionID' => $session_id,
-                                    'TranId' => '',
-                                    'Source' => 1
-                                ]
-                            ])
+        $this->response = $this->service->send('POST', '/Exec', [
+            'body' => generateXML([
+                'Request' => [
+                    'Operation' => 'Reverse',
+                    'Language' => $language,
+                    'Order' => [
+                        'Merchant' => config('kapitalbank.merchant'),
+                        'OrderID' => $order_id,
+                        'Positions' => [
+                            'Position' => [
+                                'PaymentSubjectType' => 1,
+                                'Quantity' => 1,
+                                'PaymentType' => 2,
+                                'PaymentMethodType' => 1
+                            ]
                         ]
-                    )
-                )
-            )->toArray();
+                    ],
+                    'Description' => $description,
+                    'SessionID' => $session_id,
+                    'TranId' => '',
+                    'Source' => 1
+                ]
+            ])
+        ]);
+
+        return $this;
     }
 }

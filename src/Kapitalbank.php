@@ -2,8 +2,10 @@
 
 namespace Kapitalbank;
 
+use Exception;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
+use SimpleXMLElement;
 
 class Kapitalbank implements KapitalbankContract
 {
@@ -13,6 +15,8 @@ class Kapitalbank implements KapitalbankContract
      * @var PendingRequest
      */
     private PendingRequest $service;
+
+    protected $response;
 
     public function __construct()
     {
@@ -27,5 +31,22 @@ class Kapitalbank implements KapitalbankContract
             ->withHeaders([
                 'Content-Type' => 'application/xml',
             ]);
+    }
+
+    /**
+     * @return bool
+     */
+    public function failed(): bool
+    {
+        return $this->response->failed();
+    }
+
+    /**
+     * @return array
+     * @throws Exception
+     */
+    public function toArray(): array
+    {
+        return collect(new SimpleXMLElement($this->response))->toArray();
     }
 }
