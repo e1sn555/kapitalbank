@@ -5,7 +5,7 @@ namespace Kapitalbank;
 use Exception;
 use SimpleXMLElement;
 
-trait ReFund
+trait Refund
 {
     /**
      * @throws Exception
