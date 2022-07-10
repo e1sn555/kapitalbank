@@ -12,13 +12,14 @@ trait Purchase
      * @param string $description
      * @param int $currency
      * @param string $language
+     * @param string $order_type
      * @param string|null $approve_url
      * @param string|null $cancel_url
      * @param string|null $decline_url
      * @return array
      * @throws Exception
      */
-    public function purchase(float $amount, string $description, int $currency = 944, string $language = 'AZ', string|null $approve_url = null, string $cancel_url = null, string|null $decline_url = null): array
+    public function createOrder(float $amount, string $description, int $currency = 944, string $language = 'AZ', string $order_type = 'Purchase', string|null $approve_url = null, string $cancel_url = null, string|null $decline_url = null): array
     {
         return
             collect(
@@ -29,7 +30,7 @@ trait Purchase
                                     'Operation' => 'CreateOrder',
                                     'Language' => 'RU',
                                     'Order' => [
-                                        'OrderType' => 'Purchase',
+                                        'OrderType' => $order_type,
                                         'Merchant' => config('kapitalbank.merchant'),
                                         'Amount' => $amount * 100,
                                         'Currency' => $currency,
