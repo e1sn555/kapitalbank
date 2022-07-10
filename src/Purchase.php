@@ -8,9 +8,17 @@ use SimpleXMLElement;
 trait Purchase
 {
     /**
+     * @param float $amount
+     * @param string $description
+     * @param int $currency
+     * @param string $language
+     * @param string|null $approve_url
+     * @param string|null $cancel_url
+     * @param string|null $decline_url
+     * @return array
      * @throws Exception
      */
-    public function purchase(float $amount, string $description, int $currency = 944, string $language = 'AZ'): array
+    public function purchase(float $amount, string $description, int $currency = 944, string $language = 'AZ', string|null $approve_url = null, string $cancel_url = null, string|null $decline_url = null): array
     {
         return
             collect(
@@ -26,9 +34,9 @@ trait Purchase
                                         'Amount' => $amount * 100,
                                         'Currency' => $currency,
                                         'Description' => $description,
-                                        'ApproveURL' => config('kapitalbank.approve_url'),
-                                        'CancelURL' => config('kapitalbank.cancel_url'),
-                                        'DeclineURL' => config('kapitalbank.decline_url')
+                                        'ApproveURL' => $approve_url || config('kapitalbank.approve_url'),
+                                        'CancelURL' => $cancel_url || config('kapitalbank.cancel_url'),
+                                        'DeclineURL' => $decline_url || config('kapitalbank.decline_url')
                                     ]
                                 ]
                             ])
