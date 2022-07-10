@@ -1,6 +1,7 @@
 {
     "name": "e1sn555/kapitalbank",
     "type": "library",
+    "description": "Payment service for Kapitalbank",
     "keywords": [
         "kapitalbank",
         "payment",
@@ -8,7 +9,7 @@
         "gateway"
     ],
     "license": "MIT",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "autoload": {
         "files": [
             "./src/helpers.php"
