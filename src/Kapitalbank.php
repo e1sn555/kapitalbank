@@ -41,6 +41,11 @@ class Kapitalbank implements KapitalbankContract
         return $this->response->failed();
     }
 
+    public function errors(callable $callback)
+    {
+        return $this->response->throw($callback);
+    }
+
     /**
      * @return array
      * @throws Exception

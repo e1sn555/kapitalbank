@@ -1,4 +1,4 @@
-# Kapitalbank Payment API
+# Kapitalbank Payment API with PHP (Laravel Framework)
 
 ### Məlumat
 Bu paket Laravel layihələrinizə Kapitalbankın ödəniş sistemini rahatlıqla bağlamağınıza köməklik edəcəkdoir.
@@ -61,7 +61,7 @@ Bu kodun icrasında sizin `config` qovluğunuza `kapitalbank.php` adlı yeni bir
 ```
 Siz burada `merchant`, `certificate_path` və `key_path` yazılan xanaları məcburi şəkildə doldurmalısınız (Siz kapitalbank əməkdaşına `key` yaradıb verirsiz o isə sizə `certificate` və `merchant_id` təqdim edəcəkdir). `approve_url`, `cancel_url` və `decline_url` isə default callback vermək üçün nəzərdə tutulub. Əgər siz bunu default şəkildə vermək istəmirsinizsə sorğu zamanıda verə bilərsiniz.
 
-### Servisin kontrollerimizə tanımaq (Dependency Injection)
+### Servisi kontrollerimizə tanıtmaq (Dependency Injection)
 
 ```php 
     class OrderController {
@@ -83,6 +83,9 @@ Bu sorğuda siz müştərinin hesabından pulu bir başa olaraq öz hesabınıza
         $response = $this->kapitalbank->createOrder(amount: $request->amount, description: 'X ayaqqabı üçün ödəniş');
         
         if($response->failed()) {
+            $response->errors(function ($response, $e) {
+                //
+            })
             // Servisə sorğu zamanı yarana biləcək xətaların ələ alınması
         }
         
@@ -109,7 +112,7 @@ Siz sorğu vasitəsilə pulu müştərinin hesabına qaytarırsız. Bu isə aşa
 ```
 
 ##### PreAuth sorğusu
-Bu sorğunun əsas məqsədi müştərinin hesabında olan pulu bloklamaqdır. Yəni siz müştəri məhsulu sifariş etdiyi anda bloklayır, məhsulu ona çatdırdığınız anda isə pulu öz hesabınıza keçirirsiz və ya anbarınızda məhsul tükənibsə həmin sifariş ləğv edir, pulu da blokdan açırsınız. PreAuth sorğusu buna görədə 3 hissədən ibarətdir: `sifariş yaratma`, `sifarişi tamamlama`, `sifarişi ləğv etmə`
+Bu sorğunun əsas məqsədi müştərinin hesabında olan pulu bloklamaqdır. Yəni siz müştəri məhsulu sifariş etdiyi anda pulu bloklayır, məhsulu ona çatdırdığınız anda isə pulu öz hesabınıza keçirirsiz və ya anbarınızda məhsul tükənibsə həmin sifariş ləğv edir, pulu da blokdan açırsınız. PreAuth sorğusu buna görədə 3 hissədən ibarətdir: `sifariş yaratma`, `sifarişi tamamlama`, `sifarişi ləğv etmə`
 
 ###### Sifariş yaratma
 ```php 
