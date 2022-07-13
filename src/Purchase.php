@@ -31,9 +31,9 @@ trait Purchase
                             'Amount' => $amount * 100,
                             'Currency' => $currency,
                             'Description' => $description,
-                            'ApproveURL' => $approve_url || config('kapitalbank.approve_url'),
-                            'CancelURL' => $cancel_url || config('kapitalbank.cancel_url'),
-                            'DeclineURL' => $decline_url || config('kapitalbank.decline_url')
+                            'ApproveURL' => $approve_url ?? config('kapitalbank.approve_url'),
+                            'CancelURL' => $cancel_url ?? config('kapitalbank.cancel_url'),
+                            'DeclineURL' => $decline_url ?? config('kapitalbank.decline_url')
                         ]
                     ]
                 ])
