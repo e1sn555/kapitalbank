@@ -18,7 +18,7 @@ trait CancelPreAuth
     public function cancelPreAuth(string $order_id, string $session_id, string $description, int $currency = 944, string $language = 'AZ'): Kapitalbank
     {
         $this->response = $this->service->send('POST', '/Exec', [
-            'body' => generateXML([
+            'body' => Helper::generateXML([
                 'Request' => [
                     'Operation' => 'Reverse',
                     'Language' => $language,

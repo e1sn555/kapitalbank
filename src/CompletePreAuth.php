@@ -19,7 +19,7 @@ trait CompletePreAuth
     public function completePreAuth(float $amount, string $description, string $order_id, string $session_id, int $currency = 944, string $language = 'AZ'): Kapitalbank
     {
         $this->response = $this->service->send('POST', '/Exec', [
-            'body' => generateXML([
+            'body' => Helper::generateXML([
                 'Request' => [
                     'Operation' => 'Completion',
                     'Language' => $language,

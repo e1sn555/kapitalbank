@@ -21,7 +21,7 @@ trait Purchase
     public function createOrder(float $amount, string $description, int $currency = 944, string $language = 'AZ', string $order_type = 'Purchase', string|null $approve_url = null, string $cancel_url = null, string|null $decline_url = null): Kapitalbank
     {
         $this->response = $this->service->send('POST', '/Exec', [
-                'body' => generateXML([
+                'body' => Helper::generateXML([
                     'Request' => [
                         'Operation' => 'CreateOrder',
                         'Language' => $language,

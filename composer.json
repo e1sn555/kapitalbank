@@ -1,43 +1,43 @@
 {
-    "name": "e1sn555/kapitalbank",
-    "type": "library",
-    "description": "Payment service for Kapitalbank",
-    "keywords": [
-        "kapitalbank",
-        "payment",
-        "laravel",
-        "gateway"
+  "name": "e1sn555/kapitalbank",
+  "type": "library",
+  "description": "Payment service for Kapitalbank",
+  "keywords": [
+    "kapitalbank",
+    "payment",
+    "laravel",
+    "gateway"
+  ],
+  "license": "MIT",
+  "version": "0.1.1",
+  "autoload": {
+    "files": [
+      "./src/helpers.php"
     ],
-    "license": "MIT",
-    "version": "0.0.1",
-    "autoload": {
-        "files": [
-            "./src/helpers.php"
-        ],
-        "psr-4": {
-            "Kapitalbank\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Elshen Memmedov",
-            "email": "dev.e1sn@gmail.com"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {},
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Kapitalbank\\KapitalbankServiceProvider"
-            ],
-            "aliases": {
-                "Kapitalbank": "Kapitalbank\\KapitalbankFacade"
-            }
-        }
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "prefer-stable": true
+    "psr-4": {
+      "Kapitalbank\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Elshen Memmedov",
+      "email": "dev.e1sn@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {},
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Kapitalbank\\KapitalbankServiceProvider"
+      ],
+      "aliases": {
+        "Kapitalbank": "Kapitalbank\\KapitalbankFacade"
+      }
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "prefer-stable": true
 }

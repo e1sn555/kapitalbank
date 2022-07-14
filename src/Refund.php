@@ -19,7 +19,7 @@ trait Refund
     public function refund(float $amount, string $session_id, string $order_id, string $description, int $currency = 944, string $language = 'AZ'): Kapitalbank
     {
         $this->response = $this->service->send('POST', '/Exec', [
-            'body' => generateXML([
+            'body' => Helper::generateXML([
                 'Request' => [
                     'Operation' => 'Refund',
                     'Language' => $language,
