@@ -19,7 +19,7 @@ class Helper {
             if (is_array($val)) {
                 $xml .= self::arrayToXML($val);
             } else {
-                $xml .= $val;
+                $xml .= htmlspecialchars(trim($val));
             }
             $xml .= "</$key>";
         }
